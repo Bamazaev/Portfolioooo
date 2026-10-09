@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="tg" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Олимҷон Шарипов | UI/UX & График Дизайнер</title>
+  <meta name="description"
+    content="Портфолиои расмии Олимҷон Шарипов — UI/UX Дизайнер, 3D ва График Дизайнер. Эҷоди тарҳҳои замонавӣ, веб-сомонаҳо ва барномаҳои мобилӣ.">
+  <meta name="keywords"
+    content="Олимҷон Шарипов, Olimjon Sharipov, UI/UX Designer, Graphic Designer, 3D Designer, Figma, Blender, Photoshop, Таджикистан, Dushanbe">
+  <meta name="author" content="Олимҷон Шарипов">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="olimjon-id-photo.jpg">
+
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Ambient 3D Interactive Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Glowing Cursor Follower (desktop only) -->
+  <div class="cursor-glow" id="cursor-glow"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar-wrapper" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="logo-brand">
+        <div class="logo-box">
+          <span class="logo-letter">OS</span>
+          <div class="logo-pulse"></div>
+        </div>
+        <div class="logo-text">
+          <span class="name">Олимҷон Шарипов</span>
+          <span class="badge" data-i18n="nav.role">UI/UX & 3D Designer</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-links">
+        <a href="#hero" class="nav-link active" data-i18n="nav.home">Асосӣ</a>
+        <a href="#about" class="nav-link" data-i18n="nav.about">Дар бораи ман</a>
+        <a href="#services" class="nav-link" data-i18n="nav.services">Хидматҳо</a>
+        <a href="#portfolio" class="nav-link" data-i18n="nav.portfolio">Портфолио</a>
+        <a href="#skills" class="nav-link" data-i18n="nav.skills">Маҳоратҳо</a>
+        <a href="#contact" class="nav-link" data-i18n="nav.contact">Тамос</a>
+      </nav>
+
+      <!-- Header Actions: Theme & Language Switchers -->
+      <div class="nav-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" id="lang-switcher">
+          <button class="lang-btn active" data-lang="tg" title="Тоҷикӣ">
+            <span class="flag">🇹🇯</span> <span class="lang-name">ТОҶ</span>
+          </button>
+          <button class="lang-btn" data-lang="ru" title="Русский">
+            <span class="flag">🇷🇺</span> <span class="lang-name">РУС</span>
+          </button>
+          <button class="lang-btn" data-lang="en" title="English">
+            <span class="flag">🇬🇧</span> <span class="lang-name">ENG</span>
+          </button>
+        </div>
+
+        <!-- Dark / Light Mode Toggle -->
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Табдили режим" title="Табдили режим">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <div class="mobile-drawer-content">
+        <a href="#hero" class="mobile-nav-link" data-i18n="nav.home">Асосӣ</a>
+        <a href="#about" class="mobile-nav-link" data-i18n="nav.about">Дар бораи ман</a>
+        <a href="#services" class="mobile-nav-link" data-i18n="nav.services">Хидматҳо</a>
+        <a href="#portfolio" class="mobile-nav-link" data-i18n="nav.portfolio">Портфолио</a>
+        <a href="#skills" class="mobile-nav-link" data-i18n="nav.skills">Маҳоратҳо</a>
+        <a href="#contact" class="mobile-nav-link" data-i18n="nav.contact">Тамос</a>
+
+        <div class="mobile-extra-actions">
+          <div class="mobile-lang-list">
+            <button class="lang-btn active" data-lang="tg">🇹🇯 Тоҷикӣ</button>
+            <button class="lang-btn" data-lang="ru">🇷🇺 Русский</button>
+            <button class="lang-btn" data-lang="en">🇬🇧 English</button>
+          </div>
+          <a href="#contact" class="btn btn-primary btn-block" data-i18n="hero.hireMe">Дар тамос шавед</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="status-indicator"></span>
+            <span data-i18n="hero.status">Ҳоло барои лоиҳаҳои нав омодаам</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span data-i18n="hero.greeting">Салом, ман</span>
+            <span class="gradient-text hero-name">Олимҷон Шарипов</span>
+          </h1>
+
+          <h2 class="hero-subtitle">
+            <span class="dynamic-role-text" id="typewriter-text"></span>
+            <span class="cursor-typewriter">|</span>
+          </h2>
+
+          <p class="hero-desc" data-i18n="hero.desc">
+            Эҷодгари интерфейсҳои ҷолиби UI/UX, моделсозии зебои 3D дар Blender ва дизайнҳои визуалии сатҳи премиум.
+            Идеяҳои шуморо ба воқеияти рақамӣ ва ҷаззоб табдил медиҳам.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#portfolio" class="btn btn-primary">
+              <span data-i18n="hero.viewWork">Дидани корҳо</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a href="#contact" class="btn btn-glass">
+              <span data-i18n="hero.hireMe">Фармоиш додан</span>
+              <i class="fa-regular fa-paper-plane"></i>
+            </a>
+            <a href="#payment-qr" class="btn btn-outline" id="qr-modal-btn">
+              <i class="fa-solid fa-qrcode"></i>
+              <span data-i18n="hero.qrPay">DC City QR</span>
+            </a>
+          </div>
+
+          <!-- Hero Tech Stack Mini Pills -->
+          <div class="hero-tech-strip">
+            <span class="tech-label" data-i18n="hero.tools">Асбобҳо:</span>
+            <div class="tech-pills">
+              <span class="tech-pill"><i class="fa-brands fa-figma"></i> Figma</span>
+              <span class="tech-pill"><i class="fa-solid fa-cube"></i> Blender 3D</span>
+              <span class="tech-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Photoshop</span>
+              <span class="tech-pill"><i class="fa-solid fa-pen-nib"></i> Illustrator</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Interactive Hero Card -->
+        <div class="hero-visual">
+          <div class="card-3d-wrapper" id="hero-card-3d">
+            <div class="card-3d-inner">
+              <div class="avatar-ring-glow"></div>
+              <div class="card-glass-frame">
+                <img src="olimjon-id-photo.jpg" alt="Олимҷон Шарипов - UI/UX & Graphic Designer"
+                  class="hero-avatar-img">
+                <div class="avatar-overlay-gradient"></div>
+
+                <!-- Floating 3D Badges -->
+                <div class="floating-badge badge-top-left">
+                  <div class="badge-icon icon-figma"><i class="fa-brands fa-figma"></i></div>
+                  <div class="badge-info">
+                    <span class="badge-title">UI/UX Master</span>
+                    <span class="badge-sub">Mobile & Web</span>
+                  </div>
+                </div>
+
+                <div class="floating-badge badge-bottom-right">
+                  <div class="badge-icon icon-blender"><i class="fa-solid fa-cube"></i></div>
+                  <div class="badge-info">
+                    <span class="badge-title">3D Visualization</span>
+                    <span class="badge-sub">Blender High-Poly</span>
+                  </div>
+                </div>
+
+                <div class="floating-badge badge-middle-left">
+                  <div class="badge-icon icon-exp"><i class="fa-solid fa-award"></i></div>
+                  <div class="badge-info">
+                    <span class="badge-title">3+ Соли</span>
+                    <span class="badge-sub" data-i18n="stats.experience">Таҷрибаи касбӣ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS COUNTER BAR -->
+    <section class="stats-section">
+      <div class="container stats-container">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="stat-content">
+            <h3 class="stat-number" data-target="3">0</h3>
+            <span class="stat-plus">+</span>
+            <p class="stat-title" data-i18n="stats.years">Соли таҷриба</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="stat-content">
+            <h3 class="stat-number" data-target="50">0</h3>
+            <span class="stat-plus">+</span>
+            <p class="stat-title" data-i18n="stats.projects">Лоиҳаи муваффақ</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-smile-beam"></i></div>
+          <div class="stat-content">
+            <h3 class="stat-number" data-target="100">0</h3>
+            <span class="stat-plus">%</span>
+            <p class="stat-title" data-i18n="stats.clients">Қаноатмандии мизоҷон</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="stat-content">
+            <h3 class="stat-number" data-target="24">0</h3>
+            <span class="stat-plus">/7</span>
+            <p class="stat-title" data-i18n="stats.support">Дастгирӣ ва ҳамкорӣ</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="about.tag">ШИНОСОӢ</span>
+          <h2 class="section-title">
+            <span data-i18n="about.title">Дар бораи ман ва</span>
+            <span class="gradient-text" data-i18n="about.titleHighlight"> раванди эҷоди ман</span>
+          </h2>
+          <p class="section-desc" data-i18n="about.desc">
+            Ҳар як лоиҳа як қиссаи нодир аст. Ман дизайнро на танҳо зебо, балки содда ва коршоям месозам.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-photo-card">
+            <div class="about-img-box">
+              <img src="olimjon-id-photo.jpg" alt="Олимҷон Шарипов" class="about-img">
+              <div class="about-experience-badge">
+                <span class="big-num">3+</span>
+                <span class="label" data-i18n="about.badgeLabel">Солҳои фаъолияти фаъол</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-details">
+            <h3 class="about-heading" data-i18n="about.heading">
+              Ман Олимҷон Шарипов — Дизайнере, ки маҳсулотро зинда мекунад
+            </h3>
+            <p class="about-text-p" data-i18n="about.bio1">
+              Ҳамчун як мутахассиси соҳаи UI/UX ва График Дизайн, мақсади асосии ман сохтани интерфейсҳое мебошад, ки
+              корбарон онҳоро ба осонӣ истифода бурда, таҷрибаи фаромӯшнашаванда ба даст оранд. Ман бо воситаҳои
+              замонавии Figma, Blender 3D ва маҷмӯаи Adobe кор мекунам.
+            </p>
+            <p class="about-text-p" data-i18n="about.bio2">
+              Аз эскизҳои аввалия то рендерҳои баландсифати 3D ва интерфейсҳои мобилии мукаммал, ман диққати махсусро ба
+              тафсилот, психологияи ранг ва эстетикаи муосир медиҳам.
+            </p>
+
+            <div class="about-features-grid">
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                <div>
+                  <h4 data-i18n="about.f1Title">UI/UX Мобилӣ ва Веб</h4>
+                  <p data-i18n="about.f1Desc">Тарҳи интуитивӣ ва бароҳат барои корбарон</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-shapes"></i></div>
+                <div>
+                  <h4 data-i18n="about.f1Title2">3D Иллюстратсияҳо</h4>
+                  <p data-i18n="about.f1Desc2">Моделсозӣ ва рендери 3D дар Blender</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+                <div>
+                  <h4 data-i18n="about.f1Title3">Брендинг ва Постерҳо</h4>
+                  <p data-i18n="about.f1Desc3">Эҷоди ҳувияти бренд ва графикаи таблиғотӣ</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fa-solid fa-rocket"></i></div>
+                <div>
+                  <h4 data-i18n="about.f1Title4">Суръат ва Сифат</h4>
+                  <p data-i18n="about.f1Desc4">Супурдани саривақтии кор бо сифати максималӣ</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-action-row">
+              <a href="#contact" class="btn btn-primary" data-i18n="about.discuss">Муҳокимаи лоиҳа</a>
+              <a href="#portfolio" class="btn btn-glass" data-i18n="about.explore">Омӯхтани корҳо</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section" id="services">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="services.tag">ХИДМАТҲО</span>
+          <h2 class="section-title">
+            <span data-i18n="services.title">Ман чиҳоро барои шумо</span>
+            <span class="gradient-text" data-i18n="services.titleHighlight"> сохта метавонам?</span>
+          </h2>
+          <p class="section-desc" data-i18n="services.desc">
+            Хидматҳои ҳаматарафаи дизайн аз ғоя то омодасозӣ барои барномасозӣ ва чоп.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <div class="service-card tilt-element">
+            <div class="service-glow-edge"></div>
+            <div class="service-icon-box">
+              <i class="fa-solid fa-compass-drafting"></i>
+            </div>
+            <h3 class="service-card-title" data-i18n="services.s1Title">UI/UX Тарроҳии Барномаҳо</h3>
+            <p class="service-card-desc" data-i18n="services.s1Desc">
+              Тарҳи пурраи интерфейси барномаҳои мобилӣ (iOS & Android) ва сомонаҳо дар Figma. Таҳқиқи рафтори корбар,
+              прототипсозии интерактивӣ ва системаи тайёри дизайн (Design System).
+            </p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1Item1">Барномаҳои мобилӣ (iOS /
+                  Android)</span></li>
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1Item2">Веб-сайтҳо ва Landing Page</span>
+              </li>
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s1Item3">Прототипсозӣ ва аниматсияи
+                  Figma</span></li>
+            </ul>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card tilt-element">
+            <div class="service-glow-edge"></div>
+            <div class="service-icon-box">
+              <i class="fa-solid fa-cube"></i>
+            </div>
+            <h3 class="service-card-title" data-i18n="services.s2Title">3D Моделсозӣ ва Рендер</h3>
+            <p class="service-card-desc" data-i18n="services.s2Desc">
+              Эҷоди иконаҳои футуристӣ ва 3D, рендерҳои маҳсулот барои таблиғот ва сомонаҳо дар Blender. Материалҳои
+              воқеӣ, равшанидиҳии касбӣ ва визуализатсияи зебо.
+            </p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s2Item1">3D Иконаҳо ва Splash
+                  Screens</span></li>
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s2Item2">Визуализатсияи маҳсулот</span>
+              </li>
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s2Item3">Тарҳҳои изометрӣ ва рендер</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card tilt-element">
+            <div class="service-glow-edge"></div>
+            <div class="service-icon-box">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3 class="service-card-title" data-i18n="services.s3Title">Графика ва Баннерҳо</h3>
+            <p class="service-card-desc" data-i18n="services.s3Desc">
+              Тарҳи баннерҳои тиҷоратӣ барои маркетплейсҳо, шабакаҳои иҷтимоӣ (Instagram, Telegram), постерҳои консертӣ
+              ва рекламаи беруна бо сатҳи олии Photoshop.
+            </p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s3Item1">Карточкаҳои маркетплейс
+                  (Wildberries/Ozon)</span></li>
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s3Item2">Баннерҳои сомона ва
+                  реклама</span></li>
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s3Item3">Постерҳо ва муқоваҳо</span></li>
+            </ul>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-card tilt-element">
+            <div class="service-glow-edge"></div>
+            <div class="service-icon-box">
+              <i class="fa-solid fa-fingerprint"></i>
+            </div>
+            <h3 class="service-card-title" data-i18n="services.s4Title">Брендинг ва Айдентика</h3>
+            <p class="service-card-desc" data-i18n="services.s4Desc">
+              Офаридани шахсияти шинохташаванда барои бренд: логотип, палитраи рангҳо, шрифти интихобӣ, ва қоидаҳои
+              истифодабарӣ (Brand Guidelines).
+            </p>
+            <ul class="service-list">
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s4Item1">Логотипи замонавӣ ва
+                  векторӣ</span></li>
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s4Item2">Китоби бренд (Brandbook)</span>
+              </li>
+              <li><i class="fa-solid fa-check"></i> <span data-i18n="services.s4Item3">Маводҳои чопӣ ва визитка</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio-section" id="portfolio">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="portfolio.tag">КОРҲОИ МАН</span>
+          <h2 class="section-title">
+            <span data-i18n="portfolio.title">Намунаи лоиҳаҳои</span>
+            <span class="gradient-text" data-i18n="portfolio.titleHighlight"> интихобшуда</span>
+          </h2>
+          <p class="section-desc" data-i18n="portfolio.desc">
+            Корҳои воқеии ман дар самтҳои UI/UX, моделсозии 3D ва тарҳи графикаи таблиғотӣ.
+          </p>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="portfolio-filters" id="portfolio-filters">
+          <button class="filter-btn active" data-filter="all" data-i18n="portfolio.filterAll">Ҳама корҳо</button>
+          <button class="filter-btn" data-filter="uiux" data-i18n="portfolio.filterUIUX">UI/UX Дизайн</button>
+          <button class="filter-btn" data-filter="3d" data-i18n="portfolio.filter3D">3D Моделсозӣ</button>
+          <button class="filter-btn" data-filter="graphic" data-i18n="portfolio.filterGraphic">Графика & Постер</button>
+          <button class="filter-btn" data-filter="banner" data-i18n="portfolio.filterBanner">Баннерҳо</button>
+        </div>
+
+        <!-- Portfolio Items Grid -->
+        <div class="portfolio-grid" id="portfolio-grid">
+
+          <!-- Project 1: Alif App UI Icons -->
+          <div class="portfolio-card tilt-element" data-category="uiux">
+            <div class="portfolio-img-box">
+              <img src="profile-1.png" alt="Alif Mobile App Icon Customization UI" loading="lazy">
+              <div class="portfolio-overlay">
+                <button class="preview-btn" data-img="profile-1.png" data-title="Alif App UI — Интихоби иконкаҳо"
+                  data-cat="UI/UX Mobile Design" data-tools="Figma, UI Architecture">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-meta">
+                <span class="category-badge uiux-badge">UI/UX Mobile</span>
+                <span class="tool-tag"><i class="fa-brands fa-figma"></i> Figma</span>
+              </div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p1Title">Alif App — Тарҳи саҳифаи иконкаҳо</h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p1Desc">
+                Интерфейси зебо ва қулайи мобилӣ барои интихоби иконкаҳои стандарти ва премиуми барнома бо мотиви миллӣ
+                ва муосир.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 2: 3D Figma Icon Blender -->
+          <div class="portfolio-card tilt-element" data-category="3d">
+            <div class="portfolio-img-box">
+              <img src="work-3.png" alt="3D Figma Icon Blender Render" loading="lazy">
+              <div class="portfolio-overlay">
+                <button class="preview-btn" data-img="work-3.png" data-title="3D Figma Icon — Blender Render"
+                  data-cat="3D Modeling & Visuals" data-tools="Blender 3D, Cycles">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-meta">
+                <span class="category-badge d3-badge">3D Design</span>
+                <span class="tool-tag"><i class="fa-solid fa-cube"></i> Blender 3D</span>
+              </div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p2Title">3D Иконкаи Figma — Рендери Blender</h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p2Desc">
+                Рендери балансифати изометрии иконкаи машҳури Figma бо равшанидиҳии касбӣ ва сояҳои дақиқ дар Blender.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 3: 3D Flutter Metal Icon -->
+          <div class="portfolio-card tilt-element" data-category="3d">
+            <div class="portfolio-img-box">
+              <img src="work-4.png" alt="3D Flutter Metallic Icon Render" loading="lazy">
+              <div class="portfolio-overlay">
+                <button class="preview-btn" data-img="work-4.png" data-title="3D Flutter Metallic Icon"
+                  data-cat="3D Modeling & Material Design" data-tools="Blender 3D, Shading">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-meta">
+                <span class="category-badge d3-badge">3D Design</span>
+                <span class="tool-tag"><i class="fa-solid fa-cube"></i> Blender 3D</span>
+              </div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p3Title">3D Иконкаи Flutter бо материали металлӣ</h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p3Desc">
+                Модели 3D ва коркарди материали металлии инъикоскунанда (Chrome/Metallic Reflection) барои муҳити
+                рақамӣ.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 4: Samura Knife Marketplace Banner -->
+          <div class="portfolio-card tilt-element" data-category="graphic">
+            <div class="portfolio-img-box">
+              <img src="work-2.png" alt="Samura Knife Marketplace Product Card" loading="lazy">
+              <div class="portfolio-overlay">
+                <button class="preview-btn" data-img="work-2.png" data-title="Карточкаи моли Samura Damascus"
+                  data-cat="E-commerce & Marketplace" data-tools="Photoshop, Typography">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-meta">
+                <span class="category-badge graphic-badge">Графика & Маркетплейс</span>
+                <span class="tool-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Photoshop</span>
+              </div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p4Title">Инфографикаи маҳсулот — Корди Samura</h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p4Desc">
+                Тарҳи карточкаи тиҷоратӣ барои маркетплейсҳо бо инфографикаи муфассал, типографикаи ҷаззоб ва эффекти
+                визуалии қавӣ.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 5: Food Menu Header Banner -->
+          <div class="portfolio-card tilt-element" data-category="banner">
+            <div class="portfolio-img-box">
+              <img src="profile-avatar.jpg" alt="Delicious Food Menu Header Banner" loading="lazy">
+              <div class="portfolio-overlay">
+                <button class="preview-btn" data-img="profile-avatar.jpg" data-title="Баннери таблиғотии Ресторан"
+                  data-cat="Food Banner & Promo" data-tools="Photoshop, Composition">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-meta">
+                <span class="category-badge banner-badge">Баннери таблиғотӣ</span>
+                <span class="tool-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Photoshop</span>
+              </div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p5Title">Баннери таблиғотии хӯрокворӣ</h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p5Desc">
+                Баннери динамикӣ бо композитсияи мутавозин ва рангҳои тару тоза барои таблиғи онлайн ва шабакаҳои
+                иҷтимоӣ.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 6: Special Event DJ Poster -->
+          <div class="portfolio-card tilt-element" data-category="graphic">
+            <div class="portfolio-img-box">
+              <img src="work-1.png" alt="DJ Special Music Event Poster" loading="lazy">
+              <div class="portfolio-overlay">
+                <button class="preview-btn" data-img="work-1.png" data-title="Постери консертии Мусиқӣ"
+                  data-cat="Event Poster & Branding" data-tools="Photoshop, Illustrator">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-meta">
+                <span class="category-badge graphic-badge">Постери чорабинӣ</span>
+                <span class="tool-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Photoshop</span>
+              </div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p6Title">Постери чорабинии мусиқавӣ ва DJ</h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p6Desc">
+                Дизайни равшан, ҷавонписанд ва замонавӣ бо рангҳои сурху норанҷии барҷаста ва типографикаи хос.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 7: Creative Visual Art -->
+          <div class="portfolio-card tilt-element" data-category="graphic">
+            <div class="portfolio-img-box">
+              <img src="work-6.png" alt="Creative Graphic Design Work" loading="lazy">
+              <div class="portfolio-overlay">
+                <button class="preview-btn" data-img="work-6.png" data-title="Тарҳи эҷодии графикӣ"
+                  data-cat="Visual Art" data-tools="Photoshop, Illustrator">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-meta">
+                <span class="category-badge graphic-badge">Эҷодиёти графикӣ</span>
+                <span class="tool-tag"><i class="fa-solid fa-palette"></i> Illustrator</span>
+              </div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p7Title">Тарҳ ва композитсияи визуалӣ</h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p7Desc">
+                Истифодаи шаклҳои муосир ва тобишҳои ранг барои ифодаи ғояҳои мураккаб.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 8: Digital Presentation Art -->
+          <div class="portfolio-card tilt-element" data-category="banner">
+            <div class="portfolio-img-box">
+              <img src="work-7.png" alt="Digital Graphic Presentation" loading="lazy">
+              <div class="portfolio-overlay">
+                <button class="preview-btn" data-img="work-7.png" data-title="Презентатсия ва графика"
+                  data-cat="Marketing Graphics" data-tools="Photoshop">
+                  <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+                </button>
+              </div>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-meta">
+                <span class="category-badge banner-badge">Графикаи маркетинг</span>
+                <span class="tool-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Photoshop</span>
+              </div>
+              <h3 class="portfolio-title" data-i18n="portfolio.p8Title">Графика барои муаррифӣ ва шабакаҳо</h3>
+              <p class="portfolio-desc" data-i18n="portfolio.p8Desc">
+                Омодасозии маводҳои босифат барои интишор ва муаррифии маҳсулот дар интернет.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS & TOOLS SECTION -->
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="skills.tag">МАҲОРАТҲО</span>
+          <h2 class="section-title">
+            <span data-i18n="skills.title">Асбобҳо ва</span>
+            <span class="gradient-text" data-i18n="skills.titleHighlight"> донишҳои касбӣ</span>
+          </h2>
+          <p class="section-desc" data-i18n="skills.desc">
+            Барномаҳо ва технологияҳое, ки ман ҳар рӯз барои эҷоди маҳсулоти беҳтарин истифода мебарам.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill 1 -->
+          <div class="skill-card tilt-element">
+            <div class="skill-head">
+              <div class="skill-icon-wrap icon-figma"><i class="fa-brands fa-figma"></i></div>
+              <div class="skill-meta">
+                <h4>Figma</h4>
+                <span class="skill-level" data-i18n="skills.expert">Сатҳи олӣ (95%)</span>
+              </div>
+            </div>
+            <p class="skill-desc" data-i18n="skills.figmaDesc">UI/UX, Auto Layout, Variables, Design Systems,
+              Interactive Prototyping.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill 2 -->
+          <div class="skill-card tilt-element">
+            <div class="skill-head">
+              <div class="skill-icon-wrap icon-blender"><i class="fa-solid fa-cube"></i></div>
+              <div class="skill-meta">
+                <h4>Blender 3D</h4>
+                <span class="skill-level" data-i18n="skills.advanced">Пешрафта (88%)</span>
+              </div>
+            </div>
+            <p class="skill-desc" data-i18n="skills.blenderDesc">3D Modeling, Lighting, Texturing, Shading, Cycles &
+              Eevee Rendering.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 88%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill 3 -->
+          <div class="skill-card tilt-element">
+            <div class="skill-head">
+              <div class="skill-icon-wrap icon-ps"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div class="skill-meta">
+                <h4>Adobe Photoshop</h4>
+                <span class="skill-level" data-i18n="skills.expert">Сатҳи олӣ (94%)</span>
+              </div>
+            </div>
+            <p class="skill-desc" data-i18n="skills.psDesc">Композитинг, ретуш, баннерҳои таблиғотӣ, карточкаҳои
+              маркетплейс.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 94%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill 4 -->
+          <div class="skill-card tilt-element">
+            <div class="skill-head">
+              <div class="skill-icon-wrap icon-ai"><i class="fa-solid fa-pen-nib"></i></div>
+              <div class="skill-meta">
+                <h4>Adobe Illustrator</h4>
+                <span class="skill-level" data-i18n="skills.advanced">Пешрафта (89%)</span>
+              </div>
+            </div>
+            <p class="skill-desc" data-i18n="skills.aiDesc">Вектор, тарҳи логотипҳо, айдентикаи бренд, иконография.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 89%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill 5 -->
+          <div class="skill-card tilt-element">
+            <div class="skill-head">
+              <div class="skill-icon-wrap icon-ui"><i class="fa-solid fa-mobile-screen"></i></div>
+              <div class="skill-meta">
+                <h4>Mobile & Web UX</h4>
+                <span class="skill-level" data-i18n="skills.expert">Сатҳи олӣ (92%)</span>
+              </div>
+            </div>
+            <p class="skill-desc" data-i18n="skills.uxDesc">User Research, User Flow, Wireframes, Usability Testing, App
+              Guidelines.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 92%;"></div>
+            </div>
+          </div>
+
+          <!-- Skill 6 -->
+          <div class="skill-card tilt-element">
+            <div class="skill-head">
+              <div class="skill-icon-wrap icon-code"><i class="fa-solid fa-code"></i></div>
+              <div class="skill-meta">
+                <h4>Frontend & Flutter UI</h4>
+                <span class="skill-level" data-i18n="skills.good">Хуб (80%)</span>
+              </div>
+            </div>
+            <p class="skill-desc" data-i18n="skills.codeDesc">HTML5, CSS3, JavaScript, Flutter UI layout understanding
+              барои ҳамкории комил бо таҳиягарон.</p>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENT & QR SUPPORT SECTION -->
+    <section class="qr-section" id="payment-qr">
+      <div class="container">
+        <div class="qr-card">
+          <div class="qr-content">
+            <span class="section-tag" data-i18n="qr.tag">ДАСТГИРӢ ВА ҲИСОБ</span>
+            <h2 class="qr-title" data-i18n="qr.title">Пардохти мустақим ё пешпардохт</h2>
+            <p class="qr-desc" data-i18n="qr.desc">
+              Барои фармоиши тарҳҳо ё пардохти лоиҳа метавонед тавассути корти DC City / Dushanbe City QR мустақиман
+              амалиётро иҷро намоед.
+            </p>
+            <div class="qr-number-box">
+              <span class="qr-label">Dushanbe City QR:</span>
+              <span class="qr-code-digits" id="qr-digits">9762 0000 8638 3725</span>
+              <button class="btn btn-copy" id="copy-qr-btn" title="Нусхабардорӣ">
+                <i class="fa-regular fa-copy"></i>
+                <span id="copy-text" data-i18n="qr.copy">Нусха бардоштан</span>
+              </button>
+            </div>
+            <div class="qr-guarantee">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span data-i18n="qr.safe">100% шаффоф, амн ва бевосита ба ҳисоб</span>
+            </div>
+          </div>
+
+          <div class="qr-image-wrapper">
+            <div class="qr-frame">
+              <img src="profile-2.jpg" alt="Dushanbe City QR Code: 9762 0000 8638 3725" class="qr-image">
+              <div class="qr-scan-line"></div>
+            </div>
+            <span class="qr-hint" data-i18n="qr.scanHint">Бо барномаи DC City ё дигар бонкҳо скан кунед</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-i18n="contact.tag">ТАМОС БО МАН</span>
+          <h2 class="section-title">
+            <span data-i18n="contact.title">Лоиҳаи навро якҷоя</span>
+            <span class="gradient-text" data-i18n="contact.titleHighlight"> оғоз намоем!</span>
+          </h2>
+          <p class="section-desc" data-i18n="contact.desc">
+            Идея ё саволе доред? Паём фиристед ё тавассути шабакаҳои иҷтимоӣ мустақиман нависед.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Channels Info -->
+          <div class="contact-info-cards">
+            <!-- Telegram Card -->
+            <a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="contact-card telegram-card">
+              <div class="contact-card-icon"><i class="fa-brands fa-telegram"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-label">Telegram</span>
+                <span class="contact-val">@olimjon_design</span>
+                <span class="contact-sub" data-i18n="contact.tgQuick">Ҷавоби фаврӣ дар чанд дақиқа</span>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square open-ext-icon"></i>
+            </a>
+
+            <!-- WhatsApp Card -->
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="contact-card whatsapp-card">
+              <div class="contact-card-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-label">WhatsApp</span>
+                <span class="contact-val">+992 (Рақам барои тамос)</span>
+                <span class="contact-sub" data-i18n="contact.waQuick">Паёмнависӣ ё занги мустақим</span>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square open-ext-icon"></i>
+            </a>
+
+            <!-- Location Card -->
+            <div class="contact-card location-card">
+              <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-label" data-i18n="contact.locationLabel">Макон</span>
+                <span class="contact-val" data-i18n="contact.locationVal">Душанбе, Тоҷикистон</span>
+                <span class="contact-sub" data-i18n="contact.locationSub">Ҳамкории онлайн дар саросари ҷаҳон</span>
+              </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="contact-card email-card">
+              <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="contact-card-body">
+                <span class="contact-label">Почтаи электронӣ</span>
+                <span class="contact-val">olimjon.designer@gmail.com</span>
+                <span class="contact-sub" data-i18n="contact.emailSub">Барои пешниҳодҳои расмӣ ва шартномаҳо</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <div class="contact-form-card">
+            <h3 class="form-title" data-i18n="contact.formTitle">Паёми худро бинависед</h3>
+            <p class="form-sub" data-i18n="contact.formSub">Ман дар муддати кӯтоҳтарин ба шумо посух хоҳам дод.</p>
+
+            <form id="contact-form" class="interactive-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="user-name" data-i18n="contact.nameLabel">Номи шумо *</label>
+                  <input type="text" id="user-name" name="name" required placeholder="Масалан: Ҷамшед"
+                    data-i18n-placeholder="contact.namePh">
+                </div>
+                <div class="form-group">
+                  <label for="user-contact" data-i18n="contact.contactLabel">Телефон ё Telegram *</label>
+                  <input type="text" id="user-contact" name="contact" required placeholder="+992 90 000 0000"
+                    data-i18n-placeholder="contact.contactPh">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="service-select" data-i18n="contact.serviceLabel">Кадом хидмат лозим аст?</label>
+                <select id="service-select" name="service">
+                  <option value="uiux" data-i18n="contact.optUIUX">UI/UX Тарроҳии барнома ё сомона</option>
+                  <option value="3d" data-i18n="contact.opt3D">3D Моделсозӣ ва Рендер</option>
+                  <option value="graphic" data-i18n="contact.optGraphic">Графика, постерҳо ва маркетплейс</option>
+                  <option value="branding" data-i18n="contact.optBranding">Брендинг ва Логотип</option>
+                  <option value="other" data-i18n="contact.optOther">Дигар лоиҳа</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="user-message" data-i18n="contact.msgLabel">Тафсилоти лоиҳа *</label>
+                <textarea id="user-message" name="message" rows="4" required
+                  placeholder="Дар бораи вазифа ва ҳадафи лоиҳаи худ нависед..."
+                  data-i18n-placeholder="contact.msgPh"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit">
+                <span data-i18n="contact.sendBtn">Ирсоли паём</span>
+                <i class="fa-regular fa-paper-plane"></i>
+              </button>
+
+              <div class="form-feedback" id="form-feedback"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-section">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="logo-box">
+          <span class="logo-letter">OS</span>
+        </div>
+        <div>
+          <h4 class="footer-name">Олимҷон Шарипов</h4>
+          <p class="footer-tagline" data-i18n="footer.tagline">UI/UX & Graphic & 3D Designer</p>
+        </div>
+      </div>
+
+      <p class="footer-copy">
+        &copy; 2026 Olimjon Sharipov. <span data-i18n="footer.rights">Ҳамаи ҳуқуқҳо ҳифз шудаанд.</span>
+      </p>
+
+      <div class="footer-socials">
+        <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+          class="social-icon-btn"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+          class="social-icon-btn"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+          class="social-icon-btn"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#hero" class="social-icon-btn back-to-top" title="Ба боло"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL FOR PORTFOLIO PREVIEW -->
+  <div class="lightbox-modal" id="lightbox-modal">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-dialog">
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Маҳкам кардан">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="lightbox-body">
+        <div class="lightbox-img-pane">
+          <img src="" alt="" id="lightbox-img">
+        </div>
+        <div class="lightbox-details-pane">
+          <span class="lightbox-category" id="lightbox-cat">UI/UX</span>
+          <h3 class="lightbox-title" id="lightbox-title">Номи лоиҳа</h3>
+          <div class="lightbox-tools-box">
+            <span class="tools-label" data-i18n="modal.toolsUsed">Асбобҳои корбурдӣ:</span>
+            <span class="tools-tags" id="lightbox-tools">Figma, Photoshop</span>
+          </div>
+          <p class="lightbox-full-desc" id="lightbox-desc">
+            Тавсифи муфассали лоиҳа дар ин ҷо намоиш дода мешавад.
+          </p>
+          <a href="#contact" class="btn btn-primary" id="modal-order-btn" data-i18n="modal.orderSame">Монанди ин фармоиш
+            диҳед</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
